@@ -1,6 +1,7 @@
 import React from 'react';
 import AdditionalFeature from './AdditionalFeature';
-
+import {RemoveFeature, AddFeature} from '../action/actionThingy';
+import {connect} from 'react-redux';
 const AdditionalFeatures = props => {
   return (
     <div className="content">
@@ -8,14 +9,13 @@ const AdditionalFeatures = props => {
       {props.additionalFeatures.length ? (
         <ol type="1">
           {props.additionalFeatures.map(item => (
-            <AdditionalFeature key={item.id} feature={item} />
+            <AdditionalFeature key={item.id} feature={item} AddFeature={props.AddFeature}/>
           ))}
         </ol>
-      ) : (
+      ):(
         <p>Nice looking car!</p>
       )}
     </div>
-  );
-};
-
-export default AdditionalFeatures;
+  )};
+const mapStateToProps=state=>{return{car:state.car,additionalFeatures:state.additionalFeatures}};
+export default connect(mapStateToProps,{AddFeature,RemoveFeature})(AdditionalFeatures);

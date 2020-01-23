@@ -2,8 +2,7 @@ import React from 'react';
 const AddedFeature = props => {
   return (
     <li>
-      <button className="button"
-              onClick={() => props.RemoveFeature(props.feature)}>
+      <button className="button" onClick={() => props.RemoveFeature(props.feature)}>
           X
       </button>
       {props.feature.name}

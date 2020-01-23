@@ -23,8 +23,7 @@ export const ReducerThingy = (state = initialState, action) => {
                 car: {
                     ...state.car,
                     features: [...state.car.features, action.payload]
-                }
-            };
+                }};
         case 'RemoveFeature':
             return {
                 ...state,
@@ -32,11 +31,6 @@ export const ReducerThingy = (state = initialState, action) => {
                 car: {
                     ...state.car,
                     features: state.car.features.filter(
-                        item => item.id !== action.payload.id
-                    )
-                }
-            };
-        default:
-            return state
-    }
-};
+                    item => item.id !== action.payload.id
+                    )}};
+        default: return state}};
