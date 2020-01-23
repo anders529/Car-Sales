@@ -14,11 +14,29 @@ const initialState = {
         { id: 4, name: 'Rear spoiler', price: 250 }
     ]
 };
-
-export const reducerThingy = (state = initialState, action) => {
-    switch(action.type) {
-        default: {
-            return state;
-        }
+export const ReducerThingy = (state = initialState, action) => {
+    switch (action.type) {
+        case 'AddFeature':
+            return {
+                ...state,
+                additionalPrice: state.additionalPrice + action.payload.price,
+                car: {
+                    ...state.car,
+                    features: [...state.car.features, action.payload]
+                }
+            };
+        case 'RemoveFeature':
+            return {
+                ...state,
+                additionalPrice: state.additionalPrice - action.payload.price,
+                car: {
+                    ...state.car,
+                    features: state.car.features.filter(
+                        item => item.id !== action.payload.id
+                    )
+                }
+            };
+        default:
+            return state
     }
 };
