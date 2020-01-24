@@ -7,14 +7,12 @@ const AddedFeatures = props => {
       <div className="content">
           <h6>Added Features:</h6>
           {props.car.features.length ? (
-              <ol type="1">
-                {props.car.features.map(item => (
-                    <AddedFeature key={item.id} feature={item}/>
-                ))}
-              </ol>
-          ) : (
-              <p>You can purchase items from the store.</p>
-          )};
+                  <ol type="1">
+                      {props.car.features.map(item => (
+                          <AddedFeature key={item.id} feature={item} RemoveFeature={props.RemoveFeature}/>
+                      ))}
+                  </ol>) :
+              (<p>You can purchase items from the store.</p>)};
       </div>
   )};
 const mapStateToProps=state=>{return{car:state.car}};
